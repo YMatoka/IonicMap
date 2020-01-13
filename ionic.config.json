@@ -1,7 +1,8 @@
 {
   "name": "locationApp",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

@@ -11,10 +11,13 @@ import { map } from 'rxjs/operators';
  
 import { Plugins } from '@capacitor/core';
 import * as mapboxgl from 'mapbox-gl';
+
+
 const { Geolocation } = Plugins;
  
 declare var google;
- 
+declare var Mapbox;
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -26,6 +29,7 @@ export class HomePage {
   locationsCollection: AngularFirestoreCollection<any>;
   locationList: any;
   espion:any;
+  
 
   // Map related
   @ViewChild('map',{static: false}) mapElement: ElementRef;
@@ -42,9 +46,17 @@ export class HomePage {
  
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
     
-    this.anonLogin();
+    //this.anonLogin();
   }
  
+  ionViewDidEnter() {
+    //this.showMap();
+}
+
+ionViewWillLeave() {
+    //this.hideMap();
+}
+
   ionViewWillEnter() {
     this.loadMap();
   }
@@ -55,7 +67,7 @@ anonLogin() {
     this.user = res.user;
     
     this.locationsCollection = this.afs.collection(
-      `locations/${this.user.uid}/lastTest`,
+      `locaTest/${this.user.uid}/lastTest`,
       ref => ref.orderBy('name')
     );
 
@@ -135,10 +147,9 @@ anonLogin() {
       this.updateMap(locations);
     });
   });
-    
-      
-  }
-  else{ console.log("geolocation not actived")}
+}
+  else{ 
+    console.log("geolocation not actived")}
 }
 // Use Capacitor to track our geolocation
 startTracking() {

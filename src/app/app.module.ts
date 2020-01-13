@@ -30,3 +30,15 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+export const test = {
+
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDW0aTtIIxoTSPz0Dnj57IoTr_b9yxKpCQ",
+    authDomain: "ionicmap-e79cc.firebaseapp.com",
+    databaseURL: "https://ionicmap-e79cc.firebaseio.com",
+    projectId: "ionicmap-e79cc",
+    storageBucket: "ionicmap-e79cc.appspot.com",
+    messagingSenderId: "980081207811"
+  },
+};
